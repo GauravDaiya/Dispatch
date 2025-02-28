@@ -1,0 +1,103 @@
+.custom-pagination {
+  .mat-pseudo-checkbox{
+    display: none !important;
+  }
+}
+  .pagination-wraper{
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0px;
+    width: 100%;
+    background: #fff;
+    z-index: 99;
+    border: solid 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .mat-select-container {
+    .mat-mdc-form-field-infix {
+        width: auto !important;
+        color: #fff !important;
+        min-width: 4rem;
+        vertical-align: middle;
+        min-height: 30px !important;
+        padding: 0rem 0.5rem !important;
+        border: 0px solid #cacaca;
+        border-radius: 0.5rem;
+        background: var(--primary);
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .mat-mdc-select {
+          position: absolute;
+          left: 0rem;
+          .mat-mdc-select-value {
+            color: #fff !important;
+            padding: 0 0.7rem !important;
+          }
+          .mat-mdc-select-arrow {
+            right: 10px;
+            color: var(--white);
+          }
+        }
+      }
+    .mat-mdc-form-field-subscript-wrapper{
+        display: none !important;
+      }
+      .mdc-line-ripple {
+        display: none !important;
+      }
+      p {
+        color: var(--primary);
+        font-size: 1rem;
+        margin: 0 10px;
+      }
+  }
+  
+
+  .mat-paginator-custom-container { 
+    .mat-nextPage-container {
+        padding-top: 0.5rem !important;
+        justify-content: center !important;
+      }
+      .pagination.pg-blue .page-item.active .page-link {
+        color: #fff !important;
+        background-color:var(--primary);
+        cursor: unset;
+      }
+      .pagination.pagination-circle .page-item.active .page-link {
+        border-radius: 50%;
+      }
+      .pagination.pagination-circle .page-item .page-link {
+        margin-right: 2px;
+        margin-left: 2px;
+        border-radius: 50%;
+        // padding: 0.5rem 0.75rem;
+        cursor: pointer;
+      }
+      .pagination .page-item .page-link {
+        font-size: 0.9rem;
+        color: #212529;
+        background-color: transparent;
+        border: 0;
+        outline: 0;
+        -webkit-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+      }
+      .pagination .page-item .page-link:hover {
+        background-color: #eee;
+        -webkit-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+      }
+    
+      .pagination .page-item .disabled-hover:hover {
+        background-color: transparent;
+        -webkit-transition: all 0.3s linear;
+        transition: all 0.3s linear;
+        border-radius: 0 !important;
+      }
+    color: var(--primary);
+    letter-spacing: 0.5px;
+  }
+  
+

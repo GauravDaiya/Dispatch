@@ -1,0 +1,223 @@
+.cdk-overlay-container {
+    .cdk-overlay-pane {
+        .cdk-menu-group {
+            .cdk-menu-item {
+                &.mvp-sub-menu-bar-item {
+                    width: 250px !important;
+                    padding: 0.7rem 1rem 0.7rem 1.5rem;
+                    display: flex;
+                    background-color: #01AAE4;
+                    color: white;
+                    border: none;
+
+                    &:hover {
+                        color: #0D4571;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.vehicleList {
+    .main {
+        height: calc(100vh - 70px);
+        display: flex;
+
+        .example-container {
+            width: 100%;
+
+            .sideNav {
+                width: 20% !important;
+
+    
+
+                .sideHeader {
+                    padding: 12px 16px;
+                    background-color: #0D4571;
+        
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .sideHeaderR1 {
+                        display: flex;
+                        gap: 5px;
+                        color: white;
+                    }
+
+                    .sideHeaderR2 {
+                        color: white !important;
+                        .resetBtn {
+                            cursor: pointer;
+                        }
+                        .sideFilterArrowIcon {
+                            background-color: white;
+                            display: flex;
+                            padding: 3px;
+                            align-items: center;
+                            border-radius: 50%;
+                        }
+                    }
+                }
+                .sideMiddle {
+                    height: calc(100% - 126px);
+        
+                    overflow: auto;
+                    mat-expansion-panel-header {
+                        border-radius: 0px !important;
+                        border-bottom: 1px solid lightgray;
+                        height: auto !important;
+                        padding: 16px;
+                        .mat-expansion-panel-header-title {
+                            color: #0d4571 !important;
+                        }
+                    }
+                    .filter-content-heading {
+                        color: gray;
+                        padding: 8px 0px 0px 19px;
+                    }
+                    .mdc-list-item--with-leading-checkbox .mdc-list-item__start {
+                        margin-right: 0px;
+                    }
+                    .mat-expansion-panel-body {
+                        padding: 0px 16px 16px 0px;
+                    }
+                    .mdc-list-item.mdc-list-item--with-one-line {
+                        height: 40px !important;
+                    }
+                }
+                .sideFooter {
+                    padding: 24px 24px 4px 24px;
+                    background-color: #F5F9FB !important;
+                    .mat-mdc-raised-button:not(:disabled) {
+                        // width: 100%;
+                        background-color: #01AAE4;
+                        color: white;
+                    }
+                }
+            }
+
+            .sideContent {
+                position: relative;
+                padding: 0px 15px;
+
+                // background-color: cyan;
+                .sideContentToggleBtn {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+
+                    background-color: #FEFEFE;
+                    border-radius: 50%;
+                    cursor: pointer;
+                }
+
+                .page-header {
+                    padding: 8px 15.8px !important;
+
+                    .cdk-overlay-container {
+                        .example-menu {
+                            display: inline-flex !important;
+                            flex-direction: column !important;
+                            min-width: 180px !important;
+                            max-width: 280px !important;
+                            background-color: rgba(255, 255, 255) !important;
+                            padding: 6px 0 !important;
+                        }
+                    }
+
+                    .mat-mdc-form-field-infix {
+                        min-height: 30px !important;
+                        padding: 5px 0px !important;
+                        width: 240px !important;
+
+                        .mat-mdc-form-field-input-control {
+                            font-size: 20px !important;
+                        }
+
+                        .mdc-text-field__input:focus {
+                            outline: none !important;
+                        }
+                    }
+
+                    .mat-mdc-form-field-subscript-wrapper {
+                        display: none;
+                    }
+
+                    .mat-mdc-raised-button:not(:disabled) {
+                        background-color: #01AAE4;
+                        color: #f8f9fc;
+
+                        .primary-fab-btn {
+                            border: 1px solid #01AAE4;
+                        }
+                    }
+
+                    .vehicleBorder {
+                        border-right: 0.1px solid #9c9b9b;
+                    }
+
+                    .countBox {
+                        border: 0.1px solid #9c9b9b;
+                        padding: 4px 10px;
+                        border-radius: 7px;
+                        min-width: 135px;
+
+                        .primary-text {
+                            color: #01AAE4;
+                        }
+                    }
+
+
+                }
+
+                .page-content {
+                    padding: 0px 15.8px !important;
+                
+
+                    .example-container {
+                        min-height: calc(100vh - 142px);
+
+                        border-radius: 15px !important;
+                    }
+
+                    table {
+                        width: 100%;
+
+                        border-radius: 15px 15px 0px 0px !important;
+                    }
+
+                    .mat-mdc-table thead {
+                        background-color: #0d4571 !important;
+                        border-radius: 15px 15px 0px 0px !important;
+
+                        & tr th:first-child {
+                            border-radius: 15px 0px 0px 0px !important;
+                        }
+
+                        & tr th:last-child {
+                            border-radius: 0px 15px 0px 0px;
+                        }
+                    }
+
+                    .mat-mdc-header-row {
+                        color: white !important;
+                    }
+
+                    .mat-mdc-table tbody tr:nth-child(odd) {
+                        background-color: #F5F9FB !important;
+                    }
+
+                    .mat-mdc-table tbody:nth-child(even) {
+                        background-color: white !important;
+                    }
+
+                    .primary-text {
+                        color: #01AAE4 !important;
+                    }
+                }
+            }
+        }
+    }
+}

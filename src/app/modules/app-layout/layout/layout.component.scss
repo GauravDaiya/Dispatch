@@ -1,0 +1,41 @@
+.navigation-sidenav {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  .navigation-sidenav-container {
+    /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+         causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1 !important;
+  
+    mat-sidenav {
+      border-radius: 0px !important;
+      margin-top: 70px !important;
+      .mvp-menu-bar-item {
+        width: 100% !important;
+        height: 70px !important;
+        display: flex !important;
+        align-items: center !important;
+        flex-direction: row !important;
+        justify-content: flex-start !important;
+        border: 0.1px solid red;
+  
+        span {
+          padding-right: 10px;
+          font-weight: 500;
+          font-size: 1.1rem !important;
+        }
+      }
+    }
+  }
+  
+  .example-is-mobile .navigation-sidenav-container {
+    /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+         `<body>` to be our scrolling element for mobile layouts. */
+    flex: 1 0 auto;
+  }

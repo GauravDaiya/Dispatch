@@ -1,0 +1,59 @@
+<form [formGroup]="DriverForm" (ngSubmit)="createDriver()">
+    <div class="main">
+        <div class="container-fluid page-header">
+            <div class="row m-0">
+                <div aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a routerLink="/fleet-management/drivers">Driver</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{(editMode)? 'Edit' : 'Create'}} Driver</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-6 px-1">
+                    <div class="d-flex align-items-center">
+                        <h2 class="m-0">{{(editMode)? 'Edit' : 'Create'}} Driver</h2>
+                    </div>
+                </div>
+                <div class="col-6 px-1">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <button mat-raised-button type="submit" [disabled]="!DriverForm.valid">{{(editMode)? 'Update' : 'Save'}}</button>
+                        <button mat-stroked-button type="button" class="ms-3 btn-outline-danger"
+                            routerLink="/fleet-management/drivers">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="mx-5 create-driver">
+                    <div class="row my-3">
+                        <h3 class="primary-text">Basic Details</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Driver Name</mat-label>
+                                <input matInput placeholder="Add Name" capitalize type="text" maxlength="50"
+                                    formControlName="name">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Driver Email</mat-label>
+                                <input matInput placeholder="Add Email" capitalize type="email" formControlName="email">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-4">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Driver Phone Number</mat-label>
+                                <input matInput type="text" placeholder="(XXX) XXX-XXX" mask="(XXX) XXX-XXXX"
+                                    formControlName="phone">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

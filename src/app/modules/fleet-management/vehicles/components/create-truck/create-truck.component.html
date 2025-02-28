@@ -1,0 +1,128 @@
+<form [formGroup]="TruckForm" (ngSubmit)="createTruck()" class="truck">
+    <div class="main">
+        <div class="container-fluid page-header">
+            <div class="row m-0">
+                <div aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a routerLink="/fleet-management/vehicles"
+                                class="primary-text">Vehicles</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{(editMode)? 'Edit' : 'Create'}} Truck
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div class="row m-0">
+                <div class="col-6 px-1">
+                    <div class="d-flex align-items-center">
+                        <h2 class="m-0">{{(editMode)? 'Edit' : 'Create'}} Truck</h2>
+                    </div>
+                </div>
+                <div class="col-6 px-1">
+                    <div class="d-flex justify-content-end align-items-center">
+                        <button mat-raised-button type="submit" [disabled]="!TruckForm.valid">{{(editMode)? 'Update' : 'Save'}}</button>
+                        <button mat-stroked-button type="button" class="ms-3 btn-outline-danger"
+                            routerLink="/fleet-management/vehicles">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="container-fluid">
+                <div class="mx-5 create-driver">
+                    <div class="row my-3">
+                        <h3 class="primary-text">Basic Details</h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <h6>Operational Status</h6>
+                            <mat-radio-group aria-label="Select an option" formControlName="operationalStatus">
+                                <mat-radio-button value="active">Active</mat-radio-button>
+                                <mat-radio-button value="inactive">Inactive</mat-radio-button>
+                                <mat-radio-button value="underMaintenance">Under Maintenance</mat-radio-button>
+                                <mat-radio-button value="decommissioned">Decommissioned</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                        <div class="col-3">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Select Fleet</mat-label>
+                                <input type="text" aria-label="Fleet" formControlName="searchFleet" matInput [matAutocomplete]="fleetAuto">
+                                <mat-autocomplete #fleetAuto="matAutocomplete">
+                                    @for (option of filteredFleetOptions | async; track option) {
+                                    <mat-option [value]="option">{{option}}</mat-option>
+                                    }
+                                    
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Unit Number</mat-label>
+                                <input matInput maxlength="50" formControlName="unitNumber" appAlphaNumeric placeholder="Add Unit Number"
+                                    type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Assign Driver</mat-label>
+                                <input type="text" aria-label="Fleet" formControlName="searchDriver" matInput [matAutocomplete]="driverAuto">
+                                <mat-autocomplete #driverAuto="matAutocomplete">
+                                    @for (option of filteredDriverOptions | async; track option) {
+                                    <mat-option [value]="option">{{option}}</mat-option>
+                                    }
+                                    
+                                </mat-autocomplete>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Make</mat-label>
+                                <input matInput maxlength="50" formControlName="make" appAlphaNumeric placeholder="Add Make" type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Modal</mat-label>
+                                <input matInput maxlength="50" formControlName="model" appAlphaNumeric placeholder="Add Modal" type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Modal Year</mat-label>
+                                <input matInput maxlength="4" formControlName="modelYear" numberOnly placeholder="Ex 2015" type="text">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                            <mat-form-field>
+                                <mat-label>Fuel Type</mat-label>
+                                <mat-select formControlName="fuelType">
+                                    <mat-option *ngFor="let fuelType of fuelTypes" [value]="fuelType?.fuelName">
+                                        {{fuelType?.fuelName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                            <mat-form-field class="w-100">
+                                <mat-label>Plate Type</mat-label>
+                                <mat-select formControlName="plateType">
+                                    <mat-option *ngFor="let plateType of plateTypes" [value]="plateType?.plateName">
+                                        {{plateType?.plateName}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-3">
+                            <h6>Ownership Status</h6>
+                            <mat-radio-group aria-label="Select an option"
+                                class="d-flex gap-5" formControlName="ownershipStatus">
+                                <mat-radio-button value="owned">Owned</mat-radio-button>
+                                <mat-radio-button value="leased">Leased</mat-radio-button>
+                                <mat-radio-button value="rented">Rented</mat-radio-button>
+                            </mat-radio-group>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,69 @@
+.main {
+    height: calc(100vh - 70px);
+    overflow: auto;
+
+    .page-header {
+        padding: 16px 20.8px !important;
+       
+        .mat-mdc-form-field-infix {
+            min-height: 30px !important;
+            padding: 5px 0px !important;
+            width: 268px !important;
+            .mat-mdc-form-field-input-control {
+                font-size: 20px !important;
+            }
+            .mdc-text-field__input:focus {
+                outline: none !important;
+            }
+        }
+        .mat-mdc-form-field-subscript-wrapper {
+            display: none;
+        }
+        .mat-mdc-raised-button:not(:disabled) {
+            background-color: #01AAE4;
+            color: #f8f9fc;
+            .primary-fab-btn {
+                border: 1px solid #01AAE4;
+            }
+        }
+    }
+    
+    .page-content {
+        padding: 0px 20.8px;
+        
+        .example-container {
+            min-height: calc(100vh - 142px);
+           
+            border-radius: 15px !important;
+          }
+          
+          table {
+            width: 100%;
+            
+            border-radius: 15px 15px 0px 0px !important;
+          }
+          .mat-mdc-table thead {
+            background-color: #0d4571 !important;
+            border-radius: 15px 15px 0px 0px !important;
+            & tr th:first-child {
+                border-radius: 15px 0px 0px 0px !important;
+            }
+            & tr th:last-child {
+                border-radius: 0px 15px 0px 0px;
+            }
+            }
+            .mat-mdc-header-row {
+            color: white !important;
+            }
+            .mat-mdc-table tbody tr:nth-child(odd) {
+                background-color: #F5F9FB !important;
+            }
+            .mat-mdc-table tbody:nth-child(even) {
+                background-color: white !important;
+            }
+            .primary-text {
+                color: #01AAE4 !important;
+            }
+    }
+    
+}

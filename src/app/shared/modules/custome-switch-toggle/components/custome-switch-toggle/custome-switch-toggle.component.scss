@@ -1,0 +1,48 @@
+.mdc-switch {
+    width: 120px !important;
+}
+.mdc-switch--unselected .mdc-switch__icon {
+    display: none !important;
+}
+
+.mdc-switch__handle-track {
+    width: calc(100% - 53px) !important;
+    transition: transform 400ms 0ms cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.mdc-switch--unselected:enabled .mdc-switch__handle::after {
+    background-color: white !important;
+}
+
+.mdc-switch__track::before, .mdc-switch__track::after {
+    content: "Disabled" !important;
+    display: flex;
+    align-items: center;
+    padding-left: 38px;
+    border: none !important;
+}
+
+.mdc-switch__ripple {
+    display: none !important;
+}
+
+.mdc-switch--selected .mdc-switch__track::after {
+    content: "Enabled" !important;
+    color: white !important;
+    padding-left: 20px !important;
+    padding-right: 38px !important;
+}
+
+.inviteBtn {
+    width: 130px;
+    border-radius: 5px;
+    color: #00AAE4;
+    padding: 8px 0px;
+    font-size: 20px;
+    background-color: #DDDDDD;
+    border: none;
+}
+
+
+
+

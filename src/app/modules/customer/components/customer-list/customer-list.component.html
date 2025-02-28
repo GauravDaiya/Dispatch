@@ -1,0 +1,162 @@
+<div class="page-header" id="page-header">
+    <div class="d-flex align-items-center">
+        <div class="page-title-area">
+            <h2 class="page-main-title">
+                Customers
+            </h2>
+        </div>
+        <div class="page-filter-area ms-3">
+            <mat-form-field class="w-100">
+                <input matInput type="text" (keyup)="tableSearching(search.value)" placeholder="Search Customers"
+                    [(ngModel)]="searchValue" #search>
+                <button *ngIf="search.value" matSuffix mat-icon-button aria-label="Clear"
+                    (click)="search.value = '';pageRefresh('searchReset')">
+                    <span class="material-icons">close</span>
+                </button>
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="page-action-area d-flex align-items-center">
+        <button mat-raised-button class="primary-btn" (click)="addCustomer()">Add Customer</button>
+        <button mat-mini-fab class="primary-fab-btn ms-2" (click)="pageRefresh('hardReset')">
+            <mat-icon>sync</mat-icon>
+        </button>
+    </div>
+</div>
+<div class="page-content" id="page-content">
+    <div class="app-table-grid">
+        <div class="app-table-element is-sticky">
+            <table mat-table [dataSource]="dataSource" class="app-table table-style-1" #table>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="fullName">
+                    <th mat-header-cell *matHeaderCellDef>
+                        Customer Name
+                    </th>
+
+                    <td mat-cell class="text-center primary-text" *matCellDef="let element">
+                        <div class="name-with-thumb">
+                            <div class="column-image">
+                                <label class="initials">
+                                    {{element.firstName[0]}}
+                                </label>
+                            </div>
+                            <div>{{element.firstName}}</div>
+                        </div>
+
+                    </td>
+                </ng-container>
+
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef class="text-center">
+                        Email
+                    </th>
+                    <td mat-cell class="text-center" *matCellDef="let element">
+                        {{element.address}}
+                    </td>
+                </ng-container>
+
+                <!-- Business Column -->
+                <ng-container matColumnDef="businessName">
+                    <th mat-header-cell *matHeaderCellDef class="text-center">
+                        Business Name
+                    </th>
+                    <td mat-cell class="text-center" *matCellDef="let element">
+                        {{element.businessName}}
+                    </td>
+                </ng-container>
+
+                <!-- Phone Column -->
+                <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef class="text-center">
+                        Phone
+                    </th>
+                    <td mat-cell class="text-center" *matCellDef="let element">
+                        {{element.phoneNumber}}
+                    </td>
+                </ng-container>
+
+                <!-- Country Column -->
+                <ng-container matColumnDef="country">
+                    <th mat-header-cell *matHeaderCellDef class="text-center">
+                        Country
+                    </th>
+                    <td mat-cell class="text-center" *matCellDef="let element">
+                        {{element.country}}
+                    </td>
+                </ng-container>
+
+                <!-- State Column -->
+                <ng-container matColumnDef="state">
+                    <th mat-header-cell *matHeaderCellDef class="text-center">
+                        State
+                    </th>
+                    <td mat-cell class="text-center" *matCellDef="let element">
+                        {{element.state}}
+                    </td>
+                </ng-container>
+
+                <!-- City Column -->
+                <ng-container matColumnDef="city">
+                    <th mat-header-cell *matHeaderCellDef class="text-center">
+                        City
+                    </th>
+                    <td mat-cell class="text-center" *matCellDef="let element">
+                        {{element.city}}
+                    </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef class="text-center">
+                        Action
+                    </th>
+                    <td mat-cell class="text-center" *matCellDef="let element">
+    
+                        <button mat-icon-button (click)="editCustomer(element.id)">
+                            <span [innerHTML]="'tableActionEdit' | icon"></span>
+                        </button>
+
+                        <button mat-icon-button (click)="deleteCustomer(element.id)">
+                            <span [innerHTML]="'tableActionDelete' | icon"></span>
+                        </button>
+
+                    </td>
+                </ng-container>
+
+
+                <tbody>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </tbody>
+
+                <tbody>
+                    <ng-container>
+                        <ng-container matColumnDef="noDataFound">
+                            <td mat-cell *matFooterCellDef colspan="8">
+                                <!-- <span class="app-icon" [innerHTML]="'no_service_type_found' | appicon"></span> -->
+                                <p class="text-center mt-4">
+                                    No Data Found...
+                                </p>
+                            </td>
+                        </ng-container>
+                        <tr mat-footer-row *matFooterRowDef="['noDataFound']" [hidden]="isDataFound">
+                        </tr>
+                    </ng-container>
+                </tbody>
+                <!-- No Data Column -->
+                
+
+
+            </table>
+        </div>
+    </div>
+    <div class="pagination-wraper">
+        <ng-container>
+            <app-custom-pagination [moduleName]="'Customers'" [totalRecords]="length" [length]="length"
+                (change)="paginationChange($event)"></app-custom-pagination>
+        </ng-container>
+    </div>
+</div>

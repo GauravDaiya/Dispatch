@@ -1,0 +1,113 @@
+<div class="main">
+    <div class="container-fluid page-header">
+        <div class="row m-0">
+            <div class="col-6 px-1">
+                <div class="d-flex align-items-center">
+                    <h2 class="m-0">Drivers</h2>
+                    <div class="ms-3">
+                        <mat-form-field class="example-full-width">
+                            <input placeholder="Search Driver" type="text" [(ngModel)]="searchValue" (keyup)="tableSearching(search.value)" matInput #search>
+                            <button *ngIf="search.value" matSuffix mat-icon-button aria-label="Clear"
+                                (click)="search.value = ''; pageRefresh('searchReset')">
+                                <span class="material-icons">close</span>
+                            </button>
+                            <mat-icon matSuffix>search</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 px-1">
+                <div class="d-flex justify-content-end align-items-center">
+                    <button mat-raised-button routerLink="create-driver">Add Driver</button>
+                    <button mat-mini-fab class="primary-fab-btn ms-3">
+                        <mat-icon>sync</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <section class="example-container mat-elevation-z8" tabindex="0">
+            <table mat-table [dataSource]="dataSource">
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="Name" sticky>
+                    <th mat-header-cell *matHeaderCellDef> Name </th>
+                    <td mat-cell class="primary-text" *matCellDef="let element">
+                        <div class="d-flex align-items-center">
+                            <div class="roundedLable">
+                                <ng-container *ngIf="element.name?.split(' ') as nameArr">
+                                    {{nameArr[0]?.substring(0,1)}}{{nameArr[1]?.substring(0,1)}}
+                                </ng-container>
+                                
+                            </div>
+                            <div class="ms-2">
+                                {{element.name}}
+                            </div>
+                        </div>
+                        
+                    </td>
+                </ng-container>
+
+                <!-- Email Column -->
+                <ng-container matColumnDef="Email">
+                    <th mat-header-cell *matHeaderCellDef> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+                <!-- Phone Column -->
+                <ng-container matColumnDef="Phone">
+                    <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+                </ng-container>
+
+                <!-- Status Column -->
+                <ng-container matColumnDef="Status">
+                    <th mat-header-cell *matHeaderCellDef> Status </th>
+                    <td mat-cell *matCellDef="let element">
+                        <app-custome-switch-toggle (changedStatusData)="UpdateStatus($event)" [toggleId]="element.id" [status]="element.status"></app-custome-switch-toggle>
+                    </td>
+                </ng-container>
+
+                <!-- Action Column -->
+                <ng-container matColumnDef="Action">
+                    <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button mat-icon-button routerLink="edit-driver/{{element.id}}">
+                            <span [innerHTML]="'tableActionEdit' | icon"></span>
+                        </button>
+
+                        <button mat-icon-button (click)="DeleteDriver(element.id)">
+                            <span [innerHTML]="'tableActionDelete' | icon"></span>
+                        </button>
+
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                <tbody>
+                    <ng-container>
+                        <ng-container matColumnDef="noDataFound">
+                            <td mat-cell *matFooterCellDef colspan="8">
+
+                                <p class="text-center mt-4">
+                                    No Data Found...
+                                </p>
+                            </td>
+                        </ng-container>
+                        <tr mat-footer-row *matFooterRowDef="['noDataFound']" [hidden]="isDataFound">
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </section>
+        <div class="pagination-wraper">
+            <ng-container>
+                <app-custom-pagination [moduleName]="'Drivers'" [totalRecords]="length" [length]="length"
+                    (change)="paginationChange($event)"></app-custom-pagination>
+            </ng-container>
+        </div>
+    </div>
+</div>

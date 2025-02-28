@@ -1,0 +1,8 @@
+<ng-container *ngIf="!(status == 'invite');Else demo">
+    <mat-slide-toggle [checked]="isChecked" (change)="ChangeStatus($event)"></mat-slide-toggle>
+</ng-container>
+<ng-template #demo>
+    <button class="inviteBtn" (click)="setStatus()" >Resend Invite</button>
+</ng-template>
+
+<!-- [(ngModel)]="isChecked" (change)="ChangeStatus()" -->

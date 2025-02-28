@@ -1,0 +1,62 @@
+<div class="mat-paginator-custom-container custom-pagination">
+    <div class="align-items-center d-flex flex-wrap justify-content-between pt-1">
+        <div class="mat-select-container d-flex align-items-center p-2">
+            <div class="mat-select-container-inner d-flex align-items-center">
+                <p class="mr-2 mb-0">Show</p>
+                <mat-form-field appearance="fill">
+                    <mat-select (selectionChange)="pageSizeOptionChageE($event)" [value]="pageSize">
+                        <mat-option *ngFor="let pageSizeOption of pageSizeOptions" [value]="pageSizeOption">{{
+                            pageSizeOption }}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <p class="ml-2 mb-0">entries per page</p>
+            </div>
+        </div>
+        <div class="entries-area d-flex justify-content-center p-2">
+            <div class="shows-items text-center">
+                <strong class="mr-2">{{ moduleName }}:</strong>
+                <span>
+                    <span *ngIf="length > 0; else elseBlock">
+                        {{ pageIndex * pageSize - pageSize + 1 }}-{{
+                        pageIndex * pageSize > length ? length : pageIndex * pageSize
+                        }}
+                        of {{totalRecords }}
+                    </span>
+                    <ng-template #elseBlock>
+                        0-0 of {{ totalRecords }}
+                    </ng-template>
+                    <!-- <ng-container *ngIf="paginator?.totalRecords !== paginator?.total">
+                        
+                        {{ paginator?.total }}
+                    </ng-container> -->
+                </span>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end align-items-center mat-nextPage-container p-2">
+            <nav aria-label="Page navigation">
+                <ul class="pagination pagination-circle pg-blue align-items-center mb-0">
+                    <li *ngIf="pagesLength > 1" class="page-item">
+                        <a class="page-link disabled-hover p-0" (click)="pageChange(1)">First</a>
+                    </li>
+                    <li *ngIf="pagesLength > 1" class="page-item" [ngClass]="{ disabled: !pagination.first }">
+                        <a class="page-link" aria-label="Previous" (click)="pageChange(pageIndex - 1)">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item" *ngFor="let page of pagination.pages" [ngClass]="{ active: page == pageIndex }">
+                        <a class="page-link" (click)="pageChange(page)" href="javascript:;">{{ page }}</a>
+                    </li>
+                    <li class="page-item" *ngIf="pagesLength > 1" [ngClass]="{ disabled: !pagination.last }">
+                        <a class="page-link" aria-label="Next" (click)="pageChange(pageIndex + 1)">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item" *ngIf="pagesLength > 1">
+                        <a class="page-link disabled-hover p-0" (click)="pageChange(totalPages)">Last</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

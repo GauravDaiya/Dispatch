@@ -1,1 +1,186 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use 'sass:map';
+@use '@angular/material' as mat;
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import './styles/main.scss';
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+$heading-font-family: 'SF Pro Display', sans-serif;
+$regular-font-family: 'SF Pro Display', sans-serif;
+$theme-typography: (
+    plain-family: $regular-font-family,
+    brand-family: $heading-font-family,
+    bold-weight: 500,
+    medium-weight: 500,
+    regular-weight: 500,
+);
+
+// Define your custom primary and accent colors
+$_palettes: (
+  primary: (
+    0: #000000,
+    10: #001e2c,
+    20: #003549,
+    25: #004059,
+    30: #004c69,
+    35: #005979,
+    40: #01AAE4,
+    50: #0080ad,
+    60: #009bd1,
+    70: #2bb7f2,
+    80: #7bd0ff,
+    90: #c4e7ff,
+    95: #e3f3ff,
+    98: #f5faff,
+    99: #fbfcff,
+    100: #ffffff,
+  ),
+  secondary: (
+    0: #000000,
+    10: #001d35,
+    20: #003257,
+    25: #003e69,
+    30: #00497b,
+    35: #00558e,
+    40: #0D4571,
+    50: #2f7bbd,
+    60: #4f95d9,
+    70: #6cb0f6,
+    80: #9dcaff,
+    90: #d1e4ff,
+    95: #e9f1ff,
+    98: #f8f9ff,
+    99: #fdfcff,
+    100: #ffffff,
+  ),
+  tertiary: (
+    0: #000000,
+    10: #1d1736,
+    20: #322c4c,
+    25: #3d3758,
+    30: #484264,
+    35: #544e70,
+    40: #605a7d,
+    50: #797297,
+    60: #938cb1,
+    70: #aea6cd,
+    80: #cac1e9,
+    90: #e6deff,
+    95: #f4eeff,
+    98: #fdf8ff,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+  neutral: (
+    0: #000000,
+    10: #191c1e,
+    20: #2e3133,
+    25: #393c3e,
+    30: #454749,
+    35: #505355,
+    40: #5c5f61,
+    50: #757779,
+    60: #8f9193,
+    70: #aaabae,
+    80: #c5c6c9,
+    90: #e1e2e5,
+    95: #f0f1f3,
+    98: #f8f9fc,
+    99: #fbfcff,
+    100: #ffffff,
+    4: #0c0f10,
+    6: #111416,
+    12: #1d2022,
+    17: #282a2c,
+    22: #333537,
+    24: #37393c,
+    87: #d9dadc,
+    92: #e7e8ea,
+    94: #edeef0,
+    96: #f3f3f6,
+  ),
+  neutral-variant: (
+    0: #000000,
+    10: #161c21,
+    20: #2a3136,
+    25: #353c41,
+    30: #41484d,
+    35: #4c5359,
+    40: #585f65,
+    50: #71787d,
+    60: #8b9297,
+    70: #a5acb2,
+    80: #c0c7cd,
+    90: #dce3e9,
+    95: #ebf2f8,
+    98: #f5faff,
+    99: #fbfcff,
+    100: #ffffff,
+  ),
+  error: (
+    0: #000000,
+    10: #410002,
+    20: #690005,
+    25: #7e0007,
+    30: #93000a,
+    35: #a80710,
+    40: #ba1a1a,
+    50: #de3730,
+    60: #ff5449,
+    70: #ff897d,
+    80: #ffb4ab,
+    90: #ffdad6,
+    95: #ffedea,
+    98: #fff8f7,
+    99: #fffbff,
+    100: #ffffff,
+  ),
+);
+
+$_rest: (
+  secondary: map.get($_palettes, secondary),
+  neutral: map.get($_palettes, neutral),
+  neutral-variant: map.get($_palettes,  neutral-variant),
+  error: map.get($_palettes, error),
+);
+$_primary: map.merge(map.get($_palettes, primary), $_rest);
+$_tertiary: map.merge(map.get($_palettes, tertiary), $_rest);
+
+// Define the theme object.
+$dispatch-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: $_primary,
+    tertiary: $_tertiary,
+  ),
+  typography: $theme-typography,
+  density: (
+    scale: 0,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+:root {
+  @include mat.all-component-themes($dispatch-theme);
+}
+
+// Comment out the line below if you want to use the pre-defined typography utility classes.
+// For more information: https://material.angular.io/guide/typography#using-typography-styles-in-your-application.
+// @include mat.typography-hierarchy($dispatch-theme);
+
+// Comment out the line below if you want to use the deprecated `color` inputs.
+// @include mat.color-variants-backwards-compatibility($dispatch-theme);
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; letter-spacing: 0.5px ;font-family: $regular-font-family !important; }

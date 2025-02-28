@@ -1,0 +1,11 @@
+<div class="navigation-sidenav">
+    <mat-sidenav-container class="navigation-sidenav-container">
+        <mat-sidenav [mode]="'over'" #leftSideNavigation [fixedTopGap]="mobileSideNavTopMargin">
+            <app-navigations></app-navigations>
+        </mat-sidenav>
+        <mat-sidenav-content>
+          <app-header></app-header>
+          <router-outlet></router-outlet>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

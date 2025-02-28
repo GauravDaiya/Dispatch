@@ -1,0 +1,403 @@
+body {
+    // Mat Icons
+    --mat-icon-color: var(--primary);
+
+    // Mat Button buttons
+    --mdc-protected-button-label-text-size: 1.1rem;
+    --mdc-protected-button-container-shape: 6px;
+    --mdc-protected-button-label-text-transform: capitalize;
+    --mat-protected-button-hover-state-layer-opacity: 0;
+    --mat-protected-button-pressed-state-layer-opacity: 0;
+    --mdc-protected-button-focus-container-elevation-shadow: unset;
+    --mat-protected-button-focus-state-layer-opacity:0;
+    // Outline
+    --mat-outlined-button-pressed-state-layer-opacity:0;
+    --mat-outlined-button-focus-state-layer-opacity: 0;
+    --mat-outlined-button-hover-state-layer-opacity:0;
+    --mdc-outlined-button-container-shape: 5px;
+    --mdc-outlined-button-label-text-size:1.1rem;
+    --mdc-outlined-button-outline-width: 2px;
+    
+    // Primary Mat Button
+    .primary-btn {
+        --mdc-protected-button-label-text-color: var(--white);
+        --mdc-protected-button-container-color: var(--primary);
+        
+        &.round{
+            --mdc-protected-button-container-shape: 25px;
+        }
+        
+        &.large{
+            --mdc-protected-button-container-height: 50px;
+        }
+        &.small-height{
+            --mdc-protected-button-container-height: 30px;
+            --mat-protected-button-horizontal-padding: 8px;
+        }
+        min-width: max-content;
+    }
+    .secondary-btn {
+        --mdc-protected-button-label-text-color: var(--white);
+        --mdc-protected-button-container-color: var(--secondary);
+        
+        &.round{
+            --mdc-protected-button-container-shape: 25px;
+        }
+        
+        &.large{
+            --mdc-protected-button-container-height: 50px;
+        }
+        &.small-height{
+            --mat-protected-button-horizontal-padding: 8px;
+        }
+        &.navbar{
+            display: flex;
+            justify-content: flex-start;
+            padding-left: 3rem;
+            --mdc-protected-button-container-height: 50px;
+            --mdc-protected-button-container-shape: 0px;
+            &.active{
+                // --mdc-protected-button-container-color: #cee3ed1b !important;
+                border-right: 6px solid var(--primary) !important;
+                opacity: 0.8;
+            }
+        }
+        min-width: max-content;
+    }
+    .danger-btn {
+        --mdc-protected-button-label-text-color: var(--white);
+        --mdc-protected-button-container-color: var(--danger);
+        
+        &.round{
+            --mdc-protected-button-container-shape: 25px;
+        }
+        
+        &.large{
+            --mdc-protected-button-container-height: 50px;
+        }
+        &.small-height{
+            --mdc-protected-button-container-height: 30px;
+            --mat-protected-button-horizontal-padding: 8px;
+        }
+        min-width: max-content;
+    }
+    .status-btn {
+        padding: 5px 5px 5px 14px;
+        font-size: 16px;
+        &.round{
+            --mdc-protected-button-container-shape: 25px;
+        }
+        
+        &.large{
+            --mdc-protected-button-container-height: 50px;
+        }
+        &.small-height{
+            --mdc-protected-button-container-height: 30px;
+            --mat-protected-button-horizontal-padding: 8px;
+        }
+        min-width: max-content;
+    }
+    .primary-outline-btn:not(.mat-mdc-button-disabled){
+        // .mdc-button__ripple{
+            border: 2px solid var(--primary);
+            box-shadow: none;
+            min-width: max-content;
+        // }
+    }
+    .mat-mdc-raised-button {
+        mat-icon {
+            font-size: 1.7rem !important;
+            height: 1.7rem !important;
+            width: 1.7rem !important;
+            margin-right: 0.3rem !important;
+            &.status{
+                --mat-protected-button-icon-spacing: 0px !important;
+                --mat-protected-button-icon-offset: 0px !important;
+                margin-right: 0rem !important;
+            }
+        }
+    }
+    .mat-mdc-button-disabled {
+        mat-icon{
+            color: var(--gray) !important;
+            font-size: 1.7rem !important;
+            height: 1.7rem !important;
+            width: 1.7rem !important;
+            margin-right: 0.3rem !important;
+        }
+    }
+    .dark-outline-btn{
+        border: 1.5px solid #00000090;
+        color: #00000070 !important;
+        box-shadow: none;
+    }
+    .danger-outline-btn{
+        --mdc-outlined-button-outline-color: var(--danger);
+        border-color: var(--danger);
+        color: var(--danger) !important;
+        box-shadow: none;
+    }
+    .primary-icon-btn{
+        position: relative;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        --mdc-icon-button-state-layer-size: 3rem;
+        --mdc-icon-button-state-layer-size: 3rem;
+        --mdc-icon-button-icon-size: 3rem;
+        &.full-size-button{
+            height: 100%;
+            width: 100%;
+            border-radius: 0px !important;
+            border-top-right-radius: 15px !important;
+            border-bottom-right-radius: 15px !important;
+            &:hover{
+                background: var(--tableRowBackgroundOnHover);
+            }
+            .mat-mdc-button-persistent-ripple{
+                border-radius: 0px !important; 
+                border-top-right-radius: 10px !important;
+                border-bottom-right-radius: 10px !important;
+            }
+        }
+        .mat-icon {
+            height: 2rem;
+            width: 2rem;
+            font-size: 2rem;
+        }
+        .spinner-border{
+            position: absolute;
+            width: 2.5rem;
+            height: 2.5rem;
+            // left: 3.4px;
+            // top:5.5px;
+            border-width: 4px;
+        }
+    }
+    // Mat Fab Button
+    --mdc-fab-small-container-shape: 6px;
+    --mdc-fab-small-container-elevation-shadow: 0;
+    --mdc-fab-small-hover-container-elevation-shadow: 0;
+    --mdc-fab-small-container-color: transparent;
+    --mat-fab-small-state-layer-color: transparent;
+
+    .primary-fab-btn{
+        border: 2px solid var(--primary);
+    }
+
+    // Mat Radio Button
+    --mdc-radio-state-layer-size: 30px;
+
+    // Table
+    --mat-table-row-item-label-text-size:1.1rem;
+    --mat-table-header-container-height: 45px;
+    --mat-table-header-headline-size:1.1rem;
+    --mat-table-row-item-container-height:64px;
+    --mat-table-row-item-outline-color: var(--lightgray);
+    .app-table{
+        thead{
+            --mat-table-background-color: var(--secondary);
+            --mat-table-header-headline-color: var(--white);
+            .mat-mdc-header-cell{
+                background-color:  var(--secondary);
+            }
+        }
+        &.multi-data-rows{
+            tbody{
+                tr:nth-child(odd){
+                    td{
+                        border-bottom: none;
+                    }
+                }
+                tr:nth-child(even){
+                    --mat-table-row-item-label-text-line-height:2rem;
+                    --mat-table-row-item-container-height: 2rem;
+                    vertical-align:center;
+                    td{
+                        border-bottom: 1px solid var(--lightgray);
+                    }
+                }
+            }
+        }
+    }
+    
+    // Form Input Fields
+    --mdc-filled-text-field-container-color: transparent;
+    --mdc-filled-text-field-active-indicator-color: #868686;
+    --mdc-filled-text-field-label-text-color: #868686;
+    --mdc-filled-text-field-active-indicator-height: 1px;
+    --mdc-filled-text-field-disabled-container-color:transparent; 
+    #filters-list{
+        .mat-mdc-form-field-infix {
+            --mat-form-field-container-vertical-padding:0px;
+            --mat-form-field-container-height: 20px;
+        }
+    }
+    .page-filter-area{
+        --mat-form-field-container-vertical-padding:5px;
+        --mat-form-field-container-height:30px;
+        .mat-mdc-form-field-subscript-wrapper{
+            display: none !important;
+        }
+        --mdc-icon-button-state-layer-size:20px;
+        --mat-form-field-container-text-size:1.2rem;
+    }
+    .mat-mdc-text-field-wrapper{
+        padding: 0;
+    }
+    .mat-mdc-button-touch-target{
+        position: absolute;
+        top: 50%;
+        height: 24px !important;
+        left: 50%;
+        width: 24px !important;
+        transform: translate(-50%, -50%);
+        display: var(--mat-icon-button-touch-target-display);
+    }
+    .mat-mdc-form-field-error-wrapper{
+        padding:0px 0px;
+    }
+    .is-disabled-only{
+        --mdc-filled-text-field-disabled-input-text-color: var(--black);
+        --mdc-filled-text-field-disabled-label-text-color: var(--black);
+        --mat-select-disabled-trigger-text-color: var(--black);
+        .mdc-text-field__input {
+            opacity: 1 !important;
+            font-weight: 400;
+        }
+        .mat-mdc-select-min-line{
+            font-weight: 400;
+        }
+    }
+    // Mat Select
+    --mat-select-enabled-arrow-color: var(--primary);
+    --mat-select-panel-background-color: var(--white);
+    --mat-option-selected-state-layer-color: var(--primary);
+    --mat-option-selected-state-label-text-color: var(--white);
+    .mat-mdc-select-panel{
+        padding: 0px !important;
+    }
+
+    // Hover
+    --mat-form-field-hover-state-layer-opacity: 0;
+    --mdc-filled-text-field-hover-active-indicator-color: var(--primary);
+    --mdc-filled-text-field-error-hover-active-indicator-color: var(--danger);
+
+    // Mat Card
+    --mdc-elevated-card-container-elevation:0 0 12px 0 #ddd;
+
+    // Mat Snack Bar
+    --mdc-snackbar-container-color: var(--white);
+    // Mat Auto Complete
+    --mat-option-hover-state-layer-color: var(--primary) !important;
+    --mat-option-label-text-weight: 400;
+    --mat-autocomplete-background-color: var(--white);
+    --mat-optgroup-label-text-weight: 800;
+    .mat-mdc-autocomplete-panel{
+        padding: 0 !important;
+    }
+    .mat-mdc-option:hover:not(.mdc-list-item--disabled,.mat-mdc-option-active){
+        --mat-option-label-text-color: var(--white);
+    }
+    .mat-mdc-option:last-child{
+        border-bottom: 1px solid lightgray !important;
+    }
+    // Mat Tab
+    --mat-tab-header-inactive-hover-label-text-color: var(--white);
+    --mat-tab-header-active-label-text-color: var(--secondary);
+    --mat-tab-header-label-text-size: 1rem;
+    --mat-tab-header-inactive-label-text-color: var(--secondary);
+    --mat-tab-header-active-focus-label-text-color: var(--white);
+    --mat-tab-header-inactive-focus-label-text-color: var(--white);
+    --mat-tab-header-active-hover-label-text-color: var(--white);
+    --mat-tab-header-active-ripple-color: transparent;
+    --mdc-tab-indicator-active-indicator-color: var(--secondary);
+    --mat-tab-header-active-focus-label-text-color: var(--secondary);
+    --mdc-tab-indicator-active-indicator-height: 3px;
+    --mat-tab-header-active-focus-indicator-color: var(--secondary); 
+    --mat-tab-header-active-hover-label-text-color: var(--white);
+    .mat-mdc-tab-link:focus {
+        // background-color: var(--primary);
+        .mdc-tab__text-label{
+            color: var(--secondary);
+        }
+    }
+    .mat-mdc-tab-links{
+        padding: 0 5rem 0 5rem;
+    }
+    .mdc-tab--active{
+        // background: var(--primary);
+        // border-bottom: 2px solid var(--secondary) !important;
+    }
+    .mat-mdc-tab-link:hover{
+        background: var(--primary) !important;
+        border-bottom: 2px solid var(--secondary) !important;
+    }
+    .mat-mdc-tab-link-container{
+        border-top: var(--lightgray) solid 1px;
+        border-bottom-color: var(--lightgray);
+    }
+
+    // Mat Expansion Panel
+    --mat-expansion-header-indicator-color: var(--secondary);
+
+    // Mat CheckBox
+    --mdc-checkbox-unselected-icon-color: var(--gray);
+
+    // Mat Dialog
+    .mdc-dialog__title {
+        border-bottom: 1px solid rgba(128, 128, 128, 0.379) !important;
+    }
+
+    // Mat ToolTip
+    --mdc-plain-tooltip-container-color: var(--white);
+    --mdc-plain-tooltip-supporting-text-color: var(--dark);
+    --mdc-plain-tooltip-supporting-text-size: 16px;
+    --mdc-plain-tooltip-supporting-text-tracking: 0.05rem;
+    --mdc-plain-tooltip-supporting-text-line-height: 1.5rem;
+    .mat-mdc-tooltip-surface{
+        box-shadow: 0px 1px 9px var(--gray);
+    }
+    .big-size {
+        .mat-mdc-tooltip-surface{
+            --mdc-plain-tooltip-container-shape: 25px;
+            padding: 1rem 2rem 1rem 2rem;
+            max-width: 600px;
+        }
+    }
+    .regular-size {
+        .mat-mdc-tooltip-surface {
+            --mdc-plain-tooltip-container-shape: 10px;
+            padding: 0.5rem 1rem 0.5rem 1rem;
+            max-width: 600px;
+        }
+    };
+    // Mat Selection List
+        --mdc-list-list-item-hover-label-text-color: var(--dark);
+        // --mdc-list-list-item-hover-state-layer-color: var(--primary);
+        // --mdc-list-list-item-hover-state-layer-opacity: 1;
+        // --mdc-list-list-item-hover-label-text-color: var(--secondary);
+
+    // Mat date picker
+    --mat-datepicker-calendar-container-background-color: var(--white);
+    .mat-datepicker-content-container {
+        box-shadow: 0px 0px 10px -1px lightgray;
+    }
+        // Mat Side Draw
+    --mat-sidenav-container-shape: 0px ;
+
+    // --mat-sidenav-container-width: 300px;
+    // .mat-drawer-content{
+    //     margin-left: 299px !important;
+    // }
+
+    // Mat Divider
+    .mat-divider{
+        margin: 0.5rem 0rem 0.5rem 0rem;
+        --mat-divider-width: 2px;
+        --mat-divider-color: var(--dividerColor);
+
+    }
+    // Mat Card
+    --mdc-elevated-card-container-shape: 8px;
+}

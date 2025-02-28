@@ -1,0 +1,49 @@
+<h2 mat-dialog-title>CREATE FLEET</h2>
+<form [formGroup]="fleetForm" (ngSubmit)="createFleet()" class="fleet">
+    <mat-dialog-content class="mat-typography">
+
+        <mat-form-field class="example-full-width">
+            <mat-label>First name</mat-label>
+            <input matInput placeholder="Name" formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <mat-label>Fleet Manager</mat-label>
+            <input type="text" aria-label="Fleet Manager" matInput formControlName="fleetManagerName"
+                [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="fleetManagerSelection($event)">
+                @for (option of filteredOptions | async; track option) {
+                <mat-option [value]="option">{{option}}</mat-option>
+                }
+                <mat-option value="Other">Other</mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <ng-container *ngIf="fleetForm.controls['fleetManagerName'].value == 'Other'">
+            <ng-container formGroupName="fleetManager">
+                <div class="row">
+                    <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Fleet Manager Name</mat-label>
+                            <input matInput placeholder="Fleet Manager Name" formControlName="name">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-6">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Email</mat-label>
+                            <input matInput placeholder="Email" formControlName="email">
+                        </mat-form-field>
+                    </div>
+                </div>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Phone</mat-label>
+                    <input matInput mask="(XXX) XXX-XXXX" placeholder="(XXX) XXX-XXXX" formControlName="phone">
+                </mat-form-field>
+            </ng-container>
+        </ng-container>
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-stroked-button type="button" class="btn-outline-danger" (click)="closeDialog()">Cancel</button>
+        <button mat-raised-button type="submit" [disabled]="!fleetForm.valid">Save</button>
+    </mat-dialog-actions>
+</form>

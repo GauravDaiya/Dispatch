@@ -1,0 +1,43 @@
+#page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1rem 1.3rem 1rem 1.3rem;
+
+    // Title Area
+    .page-title-area {
+        .page-main-title {
+            text-align: left;
+            font-weight: 500;
+            font-size: 2rem;
+            line-height: 1.5rem;
+            color: var(--black);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 0px;
+        }
+    }
+
+    .page-filter-area {
+        min-width: 20rem !important;
+    }
+}
+#page-content{
+    padding: 0rem 1rem 0rem 1rem;
+}
+.dialog-content{
+    padding: 1rem 0rem 1rem 0rem;
+}
+.app-table-element {
+    .mdc-button {
+        padding: 0px !important;
+        min-width: 30px !important;
+        text-align: center !important;
+    }
+    
+    .mat-mdc-button>.mat-icon {
+        margin: 0px !important;
+    }
+}

@@ -1,0 +1,52 @@
+.trailer {
+    .main {
+        height: calc(100vh - 70px);
+        overflow: auto;
+        .primary-text {
+            color: #01AAE4;
+        }
+        .breadcrumb {
+            margin-bottom: 8px !important;
+        }
+        .page-header {
+            padding: 16px 20.8px !important;
+           
+            .mat-mdc-form-field-infix {
+                min-height: 30px !important;
+                padding: 5px 0px !important;
+                width: 268px !important;
+                .mat-mdc-form-field-input-control {
+                    font-size: 20px !important;
+                }
+                .mdc-text-field__input:focus {
+                    outline: none !important;
+                }
+            }
+            .mat-mdc-form-field-subscript-wrapper {
+                display: none;
+            }
+            .mat-mdc-raised-button:not(:disabled) {
+                background-color: #01AAE4;
+                color: #f8f9fc;
+                .primary-fab-btn {
+                    border: 1px solid #01AAE4;
+                }
+            }
+            .btn-outline-danger {
+                border-color: gray !important;
+            }
+        }
+        .page-content {
+            padding: 0px 20.8px;
+            // border: 0.1px solid red;
+            .create-driver {
+                .mat-mdc-form-field {
+                    width: 100% !important;
+                }
+                .mat-mdc-outlined-button:not(:disabled) {
+                    color: #eb5e55;
+                }
+            }
+        }
+    }
+}

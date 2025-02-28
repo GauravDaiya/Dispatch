@@ -1,0 +1,60 @@
+<header>
+    <div class="header-menu-section">
+        <div class="w-100 d-flex flex-row align-items-center justify-content-start">
+            <div class="mobile-nav-button d-flex align-items-center justify-content-end" *ngIf="this.DeviceDetectService.getBreakpointDown('xl')"
+            >
+            <a role="button" (click)="toggleRightSidenav()">
+                <mat-icon>menu</mat-icon>
+            </a>
+        </div>
+            <a routerlink="/" href="/" class="dmvp-logo">
+                <img [src]="'Logo_master_dmvp_transparent.png' | assetsimage: 'local'" class="header-logo">
+            </a>
+            <mat-grid-list cols="30" rowHeight="70px">
+                @if (!this.DeviceDetectService.getBreakpointDown('xl')) {
+                    <mat-grid-tile colspan="18">
+                        <app-navigations></app-navigations>
+                    </mat-grid-tile>
+                    }
+                <mat-grid-tile [colspan]="this.DeviceDetectService.getBreakpointDown('xl') ? 30 : 12" class="">
+                    <div class="menu-actions">
+                        <div class="select-company-wraper">
+                            <div class="company-select-panal" [cdkMenuTriggerFor]="selectCompanyTrigger">
+                                Load Runner
+                                <mat-icon>arrow_drop_down</mat-icon>
+                            </div>
+                        </div>
+                        <ng-template #selectCompanyTrigger>
+                            <ul cdkMenu class="company-select-menu" aria-expanded="false">
+                                <li class="company-select-menu-items-input">
+                                    <mat-form-field class="w-100" appearance="fill">
+                                        <input matInput placeholder="Search" />
+                                    </mat-form-field>
+                                </li>
+                               
+                            </ul>
+                        </ng-template>
+                        <div class="mvp-header-drop-down-toggle" [cdkMenuTriggerFor]="profileDropDownMenu">
+                            <div class="initials-name">
+                               DM
+                            </div>
+                            <div class="company-profile-name">
+                               <p>
+                                Gaurav
+                               </p>
+                            </div>
+                        </div>
+                        <ng-template #profileDropDownMenu>
+                            <div cdkMenu class="profile-sub-menu" aria-expanded="false">
+                                <button class="profile-sub-menu-bar-item" cdkMenuItem aria-expanded="false">
+                                    <mat-icon>power_settings_new</mat-icon>
+                                    <span>Log Out</span>
+                                </button>
+                            </div>
+                        </ng-template>
+                    </div>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+    </div>
+</header>

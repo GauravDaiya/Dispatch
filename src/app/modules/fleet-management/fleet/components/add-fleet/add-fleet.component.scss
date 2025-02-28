@@ -1,0 +1,21 @@
+.fleet {
+    .mat-mdc-form-field {
+        width: 100% !important;
+    }
+    
+    .mat-mdc-outlined-button:not(:disabled) {
+        color: #eb5e55;
+    }
+    
+    .btn-outline-danger {
+        border-color: #eb5e55 !important;
+    }
+    
+    .mat-mdc-raised-button:not(:disabled) {
+        background-color: #01AAE4;
+        color: #f8f9fc;
+        .primary-fab-btn {
+            border: 1px solid #01AAE4;
+        }
+    }
+}

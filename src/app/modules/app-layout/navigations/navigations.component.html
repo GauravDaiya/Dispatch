@@ -1,0 +1,67 @@
+<div cdkMenuBar>
+    <a class="mvp-menu-bar-item" cdkMenuItem>
+        <span class="menuIcon" [innerHTML]="'dashboardMenuIcon' | icon"></span>
+        <br/>
+        <span>Dashboard</span>
+    </a>
+
+    <a class="mvp-menu-bar-item" cdkMenuItem [ngClass]="{'active-header-menu': router.url.includes('/customer')}" [routerLink]="'/customer'">
+        <span class="menuIcon" [innerHTML]="'customerMenuIcon' | icon"></span>
+        <br/>
+        <span>Customers</span>
+    </a>
+
+    <a class="mvp-menu-bar-item" cdkMenuItem [ngClass]="{'active-header-menu': router.url.includes('/fleet')}" [cdkMenuTriggerFor]="fleetSubMenu">
+        <span class="menuIcon" [innerHTML]="'fleetMenuIcon' | icon"></span>
+        <br/>
+        <span>Fleet Management</span>
+    </a>
+
+    <a class="mvp-menu-bar-item" cdkMenuItem>
+        <span class="menuIcon" [innerHTML]="'LoadMenuIcon' | icon"></span>
+        <br/>
+        <span>Loads</span>
+    </a>
+
+    <a class="mvp-menu-bar-item" cdkMenuItem>
+        <span class="menuIcon" [innerHTML]="'dispatchMenuIcon' | icon"></span>
+        <br/>
+        <span>Dispatch</span>
+    </a>
+
+    <a class="mvp-menu-bar-item" cdkMenuItem [cdkMenuTriggerFor]="reportSubMenu">
+        <span class="menuIcon" [innerHTML]="'reportsMenuIcon' | icon"></span>
+        <br/>
+        <span>Reports</span>
+    </a>
+
+    <a class="mvp-menu-bar-item" cdkMenuItem [cdkMenuTriggerFor]="settingSubMenu">
+        <span class="menuIcon" [innerHTML]="'settingsMenuIcon' | icon"></span>
+        <br/>
+        <span>Settings</span>
+    </a>
+</div>
+<ng-template #fleetSubMenu>
+    <div cdkMenu class="">
+        <button class="mvp-sub-menu-bar-item" cdkMenuItem [ngClass]="{'active-sub-header-menu': router.url.includes('fleet-management/fleet')}" [routerLink]="'/fleet-management/fleet'">Fleets</button>
+        <button class="mvp-sub-menu-bar-item" cdkMenuItem [ngClass]="{'active-sub-header-menu': router.url.includes('/fleet-management/vehicles')}" [routerLink]="'/fleet-management/vehicles'">Vehicles</button>
+        <button class="mvp-sub-menu-bar-item" cdkMenuItem [ngClass]="{'active-sub-header-menu': router.url.includes('/fleet-management/drivers')}" [routerLink]="'/fleet-management/drivers'">Drivers</button>
+    </div>
+</ng-template>
+
+<!-- Settings Sub Menu -->
+<ng-template #settingSubMenu>
+    <div cdkMenu class="">
+        <button class="mvp-sub-menu-bar-item" cdkMenuItem [routerLink]="'settings'" [ngClass]="{'active-sub-header-menu': router.url.includes('/company-settings')}">Company Settings</button>
+        <button class="mvp-sub-menu-bar-item" cdkMenuItem [routerLink]="'/settings/users'" [ngClass]="{'active-sub-header-menu': router.url.includes('/users')}">Users</button>
+        <button class="mvp-sub-menu-bar-item" cdkMenuItem [routerLink]="'/settings/tags'" [ngClass]="{'active-sub-header-menu': router.url.includes('/tags')}">Tags</button>
+    </div>
+</ng-template>
+
+<!-- Reports Sub Menu -->
+<ng-template #reportSubMenu>
+    <div cdkMenu class="">
+        <button class="mvp-sub-menu-bar-item" cdkMenuItem [routerLink]="'/reports/expenses'" [ngClass]="{'active-sub-header-menu': router.url.includes('/reports/expenses')}">Expenses Report</button>
+        <button class="mvp-sub-menu-bar-item" cdkMenuItem [routerLink]="'/reports/transactions'" [ngClass]="{'active-sub-header-menu': router.url.includes('/reports/transactions')}">Transactions Report</button>
+    </div>
+</ng-template>

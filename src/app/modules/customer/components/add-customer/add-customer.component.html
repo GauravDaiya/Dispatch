@@ -1,0 +1,270 @@
+<div class="d-flex flex-column add-customer">
+    <header class="position-sticky border-bottom">
+        <div class="d-flex p-3 justify-content-between align-items-center ">
+            <h5 class="fs-5 m-0 fw-bolder">{{isEditMode ? 'EDIT' :
+                'ADD'}} CUSTOMER</h5>
+            <span (click)="closeDialog()" role="button"><mat-icon
+                    class="text-secondary fs-3 fw-bold">close</mat-icon></span>
+        </div>
+    </header>
+    <form [formGroup]="customerform" (ngSubmit)="formSubmit()" appScrolltoinvalidfield [form]="customerform">
+        <mat-dialog-content>
+            <ng-container>
+                <div class="pt-2 row">
+                    <mat-form-field class="col-sm-4 col-6 px-2">
+                        <mat-label>First name</mat-label>
+                        <input type="text" formControlName="firstName" pattern="^[A-Za-z\s]+$" 
+                        capitalize placeholder="First name" matInput />
+                        <mat-error
+                            *ngIf="customerform.get('firstName')?.invalid && customerform.get('firstName')?.touched">
+                            Name must only contain letters and spaces.
+                            <!-- {{ messages.getMessage('customer', 'firstName', 'required') }} -->
+                        </mat-error>
+                        <mat-error *ngIf="customerform.get('firstName')?.hasError('required') && customerform.get('firstName')?.touched">
+                            {{ messages.getMessage('customer', 'firstName', 'required') }}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="col-sm-4 col-6 px-2">
+                        <mat-label>Last name</mat-label>
+                        <input type="text" formControlName="lastName" capitalize placeholder="Last name" matInput />
+                    </mat-form-field>
+                    <ng-container>
+                        <mat-form-field class="col-sm-4 col-6 px-2">
+                            <mat-label>Company name</mat-label>
+                            <input type="text" formControlName="customerCompanyName" capitalize
+                                placeholder="Company name" matInput />
+                        </mat-form-field>
+                        <mat-form-field class="col-sm-4 col-6 px-2">
+                            <mat-label>Business name</mat-label>
+                            <input type="text" formControlName="businessName" capitalize placeholder="Business name"
+                                matInput />
+                            <mat-error
+                                *ngIf="customerform.get('businessName')?.invalid && customerform.get('businessName')?.touched">
+                                {{ messages.getMessage('customer', 'businessName', 'required') }}
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col-sm-4 col-6 px-2">
+                            <mat-label>Account number</mat-label>
+                            <input type="text" formControlName="accountNumber" appAlphaNumeric maxlength="15"
+                                placeholder="Account number" matInput />
+                        </mat-form-field>
+                    </ng-container>
+                    <mat-form-field class="col-4 px-2">
+                        <mat-label>EIN</mat-label>
+                        <input type="text" formControlName="ein" mask="XX-XXXXXXX" placeholder="EIN" matInput />
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="row">
+                            <mat-form-field class="col-2 px-2">
+                                <mat-label>Type</mat-label>
+                                <mat-select formControlName="typeM">
+                                    <mat-option value="mobile">Mobile</mat-option>
+                                    <mat-option value="landline">Landline</mat-option>
+                                    <mat-option value="home">Home</mat-option>
+                                    <mat-option value="office">Office</mat-option>
+                                    <mat-option value="tollFree">Tollfree</mat-option>
+                                    <mat-option value="none">None</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="col-4 px-2">
+                                <mat-label>Phone number</mat-label>
+                                <input type="text" formControlName="phoneNumber" placeholder="(XXX) XXX-XXX"
+                                    mask="(XXX) XXX-XXXX" matInput />
+                                <mat-error class="text-danger" *ngIf="
+                                        customerform.get('phoneNumber')?.invalid &&
+                                        customerform.get('phoneNumber')?.touched
+                                            ">
+                                    <span *ngIf="customerform.get('phoneNumber')?.errors?.['required']">Phone
+                                        number
+                                        is required.</span>
+                                    
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="col-2 px-2">
+                                <mat-label>Ext.</mat-label>
+                                <input type="text" formControlName="ext" id="ext" maxlength="4" placeholder="Ext."
+                                    matInput />
+                            </mat-form-field>
+                            <div class="d-flex col-3 px-2 justify-content-between align-items-center">
+                                <div class="d-flex gap-1 align-items-center" [ngClass]="{'text-success': true}"
+                                    role="button">
+                                    <mat-icon>check_circle</mat-icon>
+                                    <span>primary</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="row">
+                            <mat-form-field class="col-2 px-2">
+                                <mat-label>Type</mat-label>
+                                <mat-select formControlName="typeB">
+                                    <mat-option value="business">Business</mat-option>
+                                    <mat-option value="personal">Personal</mat-option>
+                                    <mat-option value="other">Other</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                            <mat-form-field class="col-6 px-2">
+                                <mat-label>Email</mat-label>
+                                <input type="text" formControlName="address" placeholder="Ex. example@gmail.com"
+                                    matInput />
+                                <mat-error class="text-danger" *ngIf="
+                                    customerform.get('address')?.invalid && 
+                                    customerform.get('address')?.touched
+                                  ">
+                                    <span *ngIf="customerform.get('address')?.errors?.['email']">Invalid email
+                                        format.</span>
+                                </mat-error>
+                            </mat-form-field>
+                            <div class="d-flex col-3 px-2 justify-content-between align-items-center">
+                                <div class="d-flex gap-1 align-items-center" [ngClass]="{'text-success': true}"
+                                    role="button">
+                                    <mat-icon>check_circle</mat-icon>
+                                    <span>primary</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <mat-form-field class="w-100 px-2">
+                        <mat-label>Notes</mat-label>
+                        <textarea formControlName="notes" capitalize placeholder="Notes" matInput></textarea>
+                        <mat-error *ngIf="customerform.get('notes')?.invalid">
+                            {{ messages.getMessage('customer', 'notes', 'maxLength') }}
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <ng-container>
+                    <ng-container>
+                        <div class="fs-5">Location</div>
+                        <div class="row align-items-center">
+                            <div class="col-lg-5">
+                                <mat-checkbox class="" formControlName="isCustomerSameContact">Name & phone number same
+                                    as above</mat-checkbox>
+                            </div>
+                            <div class="col-lg-5">
+                                <h6>Location Type</h6>
+                                <mat-radio-group formControlName="locationRadiotype" aria-label="Select an option"
+                                    class="d-flex gap-2">
+                                    <mat-radio-button checked="true" value="residential">Residential</mat-radio-button>
+                                    <mat-radio-button value="business">Business</mat-radio-button>
+                                    <mat-radio-button value="both">Both</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                        </div>
+                        <div class="pt-2 row">
+                            <mat-form-field class="col-3 px-2">
+                                <mat-label>First name</mat-label>
+                                <input type="text" formControlName="locationFirstName" capitalize
+                                    placeholder="First name" matInput />
+                                <mat-error
+                                    *ngIf="customerform.get('locationFirstName')?.invalid && customerform.get('locationFirstName')?.touched">
+                                    {{ messages.getMessage('customer', 'firstName', 'required') }}
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="col-3 px-2">
+                                <mat-label>Last name</mat-label>
+                                <input type="text" formControlName="locationLastName" capitalize placeholder="Last name"
+                                    matInput />
+                            </mat-form-field>
+                            <div class="col-6 d-flex p-0">
+                                <mat-form-field class="col-3 px-2">
+                                    <mat-label>Type</mat-label>
+                                    <mat-select formControlName="locationtype">
+                                        <mat-option value="mobile">Mobile</mat-option>
+                                        <mat-option value="landline">Landline</mat-option>
+                                        <mat-option value="home">Home</mat-option>
+                                        <mat-option value="office">Office</mat-option>
+                                        <mat-option value="tollFree">TollFree</mat-option>
+                                        <mat-option value="none">None</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="col-6 px-2">
+                                    <mat-label>Phone number</mat-label>
+                                    <input type="text" formControlName="locationphoneNumber" mask="(XXX) XXX-XXXX"
+                                        placeholder="(XXX) XXX-XXX" matInput />
+                                    
+                                </mat-form-field>
+                                <mat-form-field class="col-3 px-2">
+                                    <mat-label>Ext.</mat-label>
+                                    <input type="text" formControlName="locationext" placeholder="Ext." id="locationExt"
+                                        maxlength="4" matInput />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <mat-form-field class="w-100 px-2">
+                                <mat-label>Search Location</mat-label>
+                                <input type="text" formControlName="searchlocation" capitalize placeholder="Location"
+                                    matInput />
+                            </mat-form-field>
+                        </div>
+                        <div class="pt-2 row">
+                            <mat-form-field class="col-lg-8 col-md-8 col-sm-12 col-12 px-2">
+                                <mat-label>Address line</mat-label>
+                                <input type="text" formControlName="searchaddress" capitalize placeholder="Address"
+                                    matInput />
+                                <mat-error
+                                    *ngIf="customerform.get('searchaddress')?.invalid && customerform.get('searchaddress')?.touched">
+                                    {{ messages.getMessage('customer', 'address', 'required') }}
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="col-lg-4 col-md-4 col-sm-6 col-6 px-2">
+                                <mat-label>Neighborhood</mat-label>
+                                <input type="text" formControlName="neighborhood" capitalize placeholder="Neighborhood"
+                                    matInput />
+                            </mat-form-field>
+                            <mat-form-field class="col-lg-3 col-md-3 col-sm-6 col-6 px-2">
+                                <mat-label>City</mat-label>
+                                <input type="text" formControlName="city" capitalize placeholder="City" appAlphabet
+                                    matInput />
+                                <mat-error
+                                    *ngIf="customerform.get('city')?.invalid && customerform.get('city')?.touched">
+                                    {{ messages.getMessage('customer', 'city', 'required') }}
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="col-lg-3 col-md-3 col-sm-6 col-6 px-2">
+                                <mat-label>State</mat-label>
+                                <input type="text" formControlName="state" capitalize placeholder="State" appAlphabet
+                                    matInput />
+                                <mat-error
+                                    *ngIf="customerform.get('state')?.invalid && customerform.get('state')?.touched">
+                                    {{ messages.getMessage('customer', 'state', 'required') }}
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="col-lg-3 col-md-3 col-sm-6 col-6 px-2">
+                                <mat-label>Country</mat-label>
+                                <input type="text" formControlName="country" capitalize placeholder="Country"
+                                    appAlphabet matInput />
+                                <mat-error
+                                    *ngIf="customerform.get('country')?.invalid && customerform.get('country')?.touched">
+                                    {{ messages.getMessage('customer', 'country', 'required') }}
+                                </mat-error>
+                            </mat-form-field>
+                            <mat-form-field class="col-lg-3 col-md-3 col-sm-6 col-6 px-2">
+                                <mat-label>Zip code</mat-label>
+                                <input type="text" formControlName="zip" capitalize placeholder="Zip" maxlength="12"
+                                    appAlphaNumeric matInput />
+                                <mat-error *ngIf="customerform.get('zip')?.invalid && customerform.get('zip')?.touched">
+                                    {{ messages.getMessage('customer', 'zip', 'required') }}
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </ng-container>
+                </ng-container>
+            </ng-container>
+        </mat-dialog-content>
+        <mat-dialog-actions>
+            <footer class="d-flex justify-content-end bg-light gap-2">
+                <button mat-raised-button (click)="closeDialog()" type="button"
+                    class="dark-outline-btn mx-2">Cancel</button>
+                <button mat-raised-button class="primary-btn"
+                    type="submit">{{isEditMode ? 'Update' :
+                    'Save'}}</button>
+            </footer>
+        </mat-dialog-actions>
+    </form>
+</div>
