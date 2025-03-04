@@ -13,7 +13,7 @@ export class FleetService {
    */
 
    public getAllfleetManagers() {
-    return this.http.get('http://localhost:3000/fleetManagers')
+    return this.http.get('https://json-server-app-u17t.onrender.com/fleetManagers')
    }
 
    /**
@@ -21,7 +21,7 @@ export class FleetService {
    */
 
    public getSinglefleetManager(name:any) {
-    return this.http.get(`http://localhost:3000/fleetManagers?name=${name}`)
+    return this.http.get(`https://json-server-app-u17t.onrender.com/fleetManagers?name=${name}`)
    }
 
    /**
@@ -29,7 +29,7 @@ export class FleetService {
    */
 
    public createFleetMamager(obj:any) {
-    return this.http.post('http://localhost:3000/fleetManagers', obj)
+    return this.http.post('https://json-server-app-u17t.onrender.com/fleetManagers', obj)
    }
 
    /**
@@ -37,7 +37,7 @@ export class FleetService {
    */
 
    public createFleet(obj:any) {
-    return this.http.post('http://localhost:3000/fleets',obj)
+    return this.http.post('https://json-server-app-u17t.onrender.com/fleets',obj)
    }
 
    /**
@@ -45,7 +45,7 @@ export class FleetService {
    */
 
   public getAllFleets() {
-    return this.http.get('http://localhost:3000/fleets')
+    return this.http.get('https://json-server-app-u17t.onrender.com/fleets')
   }
 
   /**
@@ -53,7 +53,7 @@ export class FleetService {
    */
 
   public getSingleFleetData(fleetId:any) {
-    return this.http.get(`http://localhost:3000/fleets/${fleetId}`)
+    return this.http.get(`https://json-server-app-u17t.onrender.com/fleets/${fleetId}`)
   }
 
   /**
@@ -61,7 +61,7 @@ export class FleetService {
    */
 
    public EditFleetData(EditId:any, EditObj:any) {
-    return this.http.put(`http://localhost:3000/fleets/${EditId}`,EditObj)
+    return this.http.put(`https://json-server-app-u17t.onrender.com/fleets/${EditId}`,EditObj)
    }
 
    /**
@@ -69,6 +69,6 @@ export class FleetService {
    */
 
    public DeleteFleetData(DelId:any) {
-    return this.http.delete(`http://localhost:3000/fleets/${DelId}`)
+    return this.http.delete(`https://json-server-app-u17t.onrender.com/fleets/${DelId}`)
    }
 }

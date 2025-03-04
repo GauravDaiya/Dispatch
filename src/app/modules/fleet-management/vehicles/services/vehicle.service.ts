@@ -13,7 +13,7 @@ export class VehicleService {
    */
 
    public getFuelList() {
-    return this.http.get('http://localhost:3000/fuelTypeList');
+    return this.http.get('https://json-server-app-u17t.onrender.com/fuelTypeList');
    }
 
    /**
@@ -21,7 +21,7 @@ export class VehicleService {
    */
 
    public getPlateList() {
-    return this.http.get('http://localhost:3000/plateTypeList');
+    return this.http.get('https://json-server-app-u17t.onrender.com/plateTypeList');
    }
 
     /**
@@ -29,7 +29,7 @@ export class VehicleService {
    */
 
    public getVehicleList() {
-    return this.http.get('http://localhost:3000/vehicles');
+    return this.http.get('https://json-server-app-u17t.onrender.com/vehicles');
    }
 
    /**
@@ -37,6 +37,6 @@ export class VehicleService {
    */
 
    public addVehicle(vehicleData:any) {
-    return this.http.post('http://localhost:3000/vehicles',vehicleData)
+    return this.http.post('https://json-server-app-u17t.onrender.com/vehicles',vehicleData)
    }
 }

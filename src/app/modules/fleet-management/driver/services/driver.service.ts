@@ -13,7 +13,7 @@ export class DriverService {
   */
 
   public getAllDrivers() {
-    return this.http.get('http://localhost:3000/drivers')
+    return this.http.get('https://json-server-app-u17t.onrender.com/drivers')
   }
 
   /**
@@ -21,7 +21,7 @@ export class DriverService {
   */
 
   public createDriver(obj: any) {
-    return this.http.post('http://localhost:3000/drivers', obj)
+    return this.http.post('https://json-server-app-u17t.onrender.com/drivers', obj)
   }
 
   /**
@@ -29,7 +29,7 @@ export class DriverService {
   */
 
   public getDriverById(id: any) {
-    return this.http.get(`http://localhost:3000/drivers/${id}`)
+    return this.http.get(`https://json-server-app-u17t.onrender.com/drivers/${id}`)
   }
 
   /**
@@ -38,7 +38,7 @@ export class DriverService {
 
   public updateDriverStatus(updId:any , updStatus:any) {
     console.log(updId,updStatus)
-    return this.http.patch(`http://localhost:3000/drivers/${updId}`, {status : updStatus})
+    return this.http.patch(`https://json-server-app-u17t.onrender.com/drivers/${updId}`, {status : updStatus})
   }
 
   /**
@@ -46,7 +46,7 @@ export class DriverService {
   */
 
   public editDriverData(EditId: any, EditObj: any) {
-    return this.http.put(`http://localhost:3000/drivers/${EditId}`, EditObj)
+    return this.http.put(`https://json-server-app-u17t.onrender.com/drivers/${EditId}`, EditObj)
   }
 
   /**
@@ -54,6 +54,6 @@ export class DriverService {
   */
 
   public DeleteDriverData(DelId: any) {
-    return this.http.delete(`http://localhost:3000/drivers/${DelId}`)
+    return this.http.delete(`https://json-server-app-u17t.onrender.com/drivers/${DelId}`)
   }
 }
