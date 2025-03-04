@@ -15,41 +15,41 @@ export class CustomerService {
    *=============== Get Single Customer ==========================
    */
   public getCustomerReadByIdService(customerId: any) {
-    return this.http.get(`http://localhost:3000/customer/${customerId}`)
+    return this.http.get(`https://gauravdaiya.github.io/DispatchDb/db.json/customer/${customerId}`)
   }
 
   /**
    *=============== Add Customers ==========================
    */
   public createCustomer(customerData: any) {
-    return this.http.post('http://localhost:3000/customer', customerData)
+    return this.http.post('https://gauravdaiya.github.io/DispatchDb/db.json/customer', customerData)
   }
 
   /**
  *=============== Get All Customers List ==========================
  */
   public getCustomers(): Observable<any []> {
-    return this.http.get<any []>('http://localhost:3000/customer')
+    return this.http.get<any []>('https://gauravdaiya.github.io/DispatchDb/db.json/customer')
   }
 
    /**
  *=============== Search Customers ==========================
  */
  public searchCustomers(SearchString:string) {
-  return this.http.get(`http://localhost:3000/customer?firstName=${SearchString}`)
+  return this.http.get(`https://gauravdaiya.github.io/DispatchDb/db.json/customer?firstName=${SearchString}`)
 }
 
   /**
  *=============== Edit Customer ==========================
  */
   public editCustomer(customerId: any, updatedCustomerData: any) {
-    return this.http.put(`http://localhost:3000/customer/${customerId}`, updatedCustomerData)
+    return this.http.put(`https://gauravdaiya.github.io/DispatchDb/db.json/customer/${customerId}`, updatedCustomerData)
   }
 
   /**
     *=============== Remove Customer ==========================
     */
   public DeleteCustomerService(DelId: any) {
-    return this.http.delete(`http://localhost:3000/customer/${DelId}`)
+    return this.http.delete(`https://gauravdaiya.github.io/DispatchDb/db.json/customer/${DelId}`)
   }
 }
